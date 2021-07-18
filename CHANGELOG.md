@@ -1,7 +1,7 @@
 # Changelog
 
-All notable changes to `phpunitrunfailed` will be documented in this file
+All notable changes to `phpunit-failed-runner` will be documented in this file
 
-## 1.0.0 - 201X-XX-XX
+## 1.0.0 - 2021-07-18
 
-- initial release
+- Initial release

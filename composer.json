@@ -1,6 +1,6 @@
 {
     "name": "chrisdicarlo/phpunit-failed-runner",
-    "description": "Run only your failed Phpunit tests",
+    "description": "Run only your failed PHPUnit tests",
     "keywords": [
         "chrisdicarlo",
         "phpunit-failed-runner",

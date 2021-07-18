@@ -2,18 +2,19 @@
 
 logfile=./testdox.xml
 if test -f "$logfile"; then
-    echo "Logfile found. Filter for failed..."
-    failed_tests="$(xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/failed-tests.xsl testdox.xml | sed s/\,/\|/g)"
+    echo "Logfile found. Searching for failed tests..."
+    failed_tests="$(xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/failed-tests.xsl testdox.xml)"
 
     if [ "$failed_tests" = "" ]; then
-	echo "No failed tests!  Great job!"
+        echo "No failed tests!  Great job!"
+        rm ./testdox.xml
     else
         ./vendor/bin/phpunit --filter "'$failed_tests'"
     fi
 
 else
-   echo "Logfile not found. Running the full test suite..."
-   ./phpunit
+    echo "Logfile not found. Running the full test suite..."
+    ./vendor/bin/phpunit
 fi
 
 exit 0

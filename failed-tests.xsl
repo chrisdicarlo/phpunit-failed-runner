@@ -7,18 +7,13 @@
     </xsl:template>
 
 <xsl:template match="tests">
-        <xsl:apply-templates select="./test[@status = '3']" />
+    <xsl:apply-templates select="./test[@status = '3']" />
 </xsl:template>
 
 <xsl:template match="test">
-    <xsl:choose>
-        <xsl:when test="@status = 3">
-            <xsl:value-of select="@methodName" />
-            <xsl:if test="position() != last()">
-                <xsl:text>,</xsl:text>
-            </xsl:if>
-        </xsl:when>
-        <xsl:otherwise />
-    </xsl:choose>
+    <xsl:value-of select="@methodName" />
+    <xsl:if test="position() != last()">
+        <xsl:text>|</xsl:text>
+    </xsl:if>
 </xsl:template>
 </xsl:stylesheet>

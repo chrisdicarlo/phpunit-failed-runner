@@ -1,4 +1,4 @@
-# Very short description of the package
+# Run Only Your Failed Tests
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/chrisdicarl/phpunit-failed-runner.svg?style=flat-square)](https://packagist.org/packages/chrisdicarl/phpunit-failed-runner)
 [![Total Downloads](https://img.shields.io/packagist/dt/chrisdicarl/phpunit-failed-runner.svg?style=flat-square)](https://packagist.org/packages/chrisdicarl/phpunit-failed-runner)
@@ -11,7 +11,7 @@ Small package that allows you to run only your previously failed tests.
 You can install the package via composer:
 
 ```bash
-composer require chrisdicarl/phpunit-failed-runner
+composer require chrisdicarl/phpunit-failed-runner --dev
 ```
 
 ## Configuration
