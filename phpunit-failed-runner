@@ -1,0 +1,15 @@
+#!/bin/bash
+
+logfile=./testdox.xml
+if test -f "$logfile"; then
+    echo "Logfile found. Filter for failed..."
+    ./phpunit --filter "'$(xmlstarlet tr --omit-decl ./../failed-tests.xsl ./../../testdox.xml | sed s/\,/\|/g)'"
+    # failed_tests=$(xmlstarlet tr --omit-decl failed-tests.xsl testdox.xml | sed s/\,/\|/g)
+    # ./vendor/bin/phpunit --filter "'${failed_tests}'"
+
+    exit $?
+else
+   echo "Logfile not found. Running the full test suite..."
+   ./phpunit
+   exit 0
+fi

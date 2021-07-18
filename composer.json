@@ -1,0 +1,21 @@
+{
+    "name": "chrisdicarlo/phpunitrunfailed",
+    "description": "Run only your failed Phpunit tests",
+    "keywords": [
+        "chrisdicarlo",
+        "phpunitrunfailed"
+    ],
+    "homepage": "https://github.com/chrisdicarlo/phpunitrunfailed",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Chris Di Carlo",
+            "email": "chris@dicarlosystems.ca",
+            "role": "Developer"
+        }
+    ],
+    "bin": [
+        "phpunit-failed-runner"
+    ]
+}
