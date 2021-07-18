@@ -5,7 +5,7 @@
         "chrisdicarlo",
         "phpunit-failed-runner",
         "phpunit",
-        "test",
+        "test"
     ],
     "homepage": "https://github.com/chrisdicarlo/phpunit-failed-runner",
     "license": "MIT",
