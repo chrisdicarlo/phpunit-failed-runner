@@ -1,11 +1,13 @@
 {
-    "name": "chrisdicarlo/phpunitrunfailed",
+    "name": "chrisdicarlo/phpunit-failed-runner",
     "description": "Run only your failed Phpunit tests",
     "keywords": [
         "chrisdicarlo",
-        "phpunitrunfailed"
+        "phpunit-failed-runner",
+        "phpunit",
+        "test",
     ],
-    "homepage": "https://github.com/chrisdicarlo/phpunitrunfailed",
+    "homepage": "https://github.com/chrisdicarlo/phpunit-failed-runner",
     "license": "MIT",
     "type": "library",
     "authors": [
