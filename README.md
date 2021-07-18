@@ -1,29 +1,39 @@
 # Very short description of the package
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/chrisdicarl/phpunitrunfailed.svg?style=flat-square)](https://packagist.org/packages/chrisdicarl/phpunitrunfailed)
-[![Total Downloads](https://img.shields.io/packagist/dt/chrisdicarl/phpunitrunfailed.svg?style=flat-square)](https://packagist.org/packages/chrisdicarl/phpunitrunfailed)
-![GitHub Actions](https://github.com/chrisdicarl/phpunitrunfailed/actions/workflows/main.yml/badge.svg)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/chrisdicarl/phpunit-failed-runner.svg?style=flat-square)](https://packagist.org/packages/chrisdicarl/phpunit-failed-runner)
+[![Total Downloads](https://img.shields.io/packagist/dt/chrisdicarl/phpunit-failed-runner.svg?style=flat-square)](https://packagist.org/packages/chrisdicarl/phpunit-failed-runner)
+![GitHub Actions](https://github.com/chrisdicarl/phpunit-failed-runner/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Small package that allows you to run only your previously failed tests.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require chrisdicarl/phpunitrunfailed
+composer require chrisdicarl/phpunit-failed-runner
+```
+
+## Configuration
+
+This package requires Phpunit logging in textdox XML format.  Add the following to your phpunit.xml file:
+
+```xml
+<logging>
+    <testdoxXml outputFile="testdox.xml"/>
+</logging>
+```
+
+Optionally, add the logfile to your .gitignore:
+
+```bash
+echo testdox.xml >> .gitignore
 ```
 
 ## Usage
 
-```php
-// Usage description here
-```
-
-### Testing
-
 ```bash
-composer test
+./vendor/bin/phpunit-failed-runner
 ```
 
 ### Changelog
@@ -46,7 +56,3 @@ If you discover any security related issues, please email chris@dicarlosystems.c
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## PHP Package Boilerplate
-
-This package was generated using the [PHP Package Boilerplate](https://laravelpackageboilerplate.com) by [Beyond Code](http://beyondco.de/).
