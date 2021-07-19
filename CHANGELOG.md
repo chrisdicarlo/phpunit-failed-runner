@@ -2,6 +2,10 @@
 
 All notable changes to `phpunit-failed-runner` will be documented in this file
 
+## 1.1.1 - 2021-07-18
+
+- Fix bug in bash script when pruning test elements
+
 ## 1.1.0 - 2021-07-18
 
 - Removes log file once all tests have passed

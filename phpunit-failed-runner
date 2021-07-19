@@ -13,7 +13,8 @@ if test -f "$logfile"; then
         ./vendor/bin/phpunit --filter "'$failed_tests'"
 
         # Strip out everything except the failed tests
-        xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl testdox.xml > testdox.xml
+        xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl testdox.xml > testdoxTMP.xml
+        mv testdoxTMP.xml testdox.xml
     fi
 
     # If there are no more failed tests, remove the log file
@@ -29,7 +30,8 @@ else
     ./vendor/bin/phpunit
 
     # Strip out everything except the failed tests
-    xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl testdox.xml > testdox.xml
+    xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl testdox.xml > testdoxTMP.xml
+        mv testdoxTMP.xml testdox.xml
 fi
 
 exit 0
