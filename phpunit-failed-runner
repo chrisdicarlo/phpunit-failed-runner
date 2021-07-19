@@ -4,34 +4,34 @@ logfile=./testdox.xml
 
 if test -f "$logfile"; then
     echo "Logfile found. Searching for failed tests..."
-    
+
+    # Strip out everything except the failed tests just in
+    # case they were run using a different tool or script
+    xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl testdox.xml > testdoxTMP.xml
+    mv testdoxTMP.xml testdox.xml
+
     failed_tests="$(xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/failed-tests.xsl testdox.xml)"
 
     if [ "$failed_tests" = "" ]; then
         echo "No failed tests!  Great job!"
     else
+        echo "Found failed tests, filtering..."
         ./vendor/bin/phpunit --filter "'$failed_tests'"
-
-        # Strip out everything except the failed tests
-        xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl testdox.xml > testdoxTMP.xml
-        mv testdoxTMP.xml testdox.xml
     fi
-
-    # If there are no more failed tests, remove the log file
-    count_failed_tests="$(xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/count-failed.xsl testdox.xml)"
-
-    if [ "$count_failed_tests" = "0" ]; then
-        rm ./testdox.xml
-    fi
-
 else
     echo "Logfile not found. Running the full test suite..."
-
     ./vendor/bin/phpunit
+fi
 
-    # Strip out everything except the failed tests
-    xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl testdox.xml > testdoxTMP.xml
-        mv testdoxTMP.xml testdox.xml
+# Strip out everything except the failed tests
+xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl testdox.xml > testdoxTMP.xml
+mv testdoxTMP.xml testdox.xml
+
+# If there are no more failed tests, remove the log file
+count_failed_tests="$(xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/count-failed.xsl testdox.xml)"
+
+if [ "$count_failed_tests" = "0" ]; then
+    rm ./testdox.xml
 fi
 
 exit 0
