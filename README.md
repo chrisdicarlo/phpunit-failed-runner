@@ -1,8 +1,8 @@
 # Run Only Your Failed Tests
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/chrisdicarl/phpunit-failed-runner.svg?style=flat-square)](https://packagist.org/packages/chrisdicarl/phpunit-failed-runner)
-[![Total Downloads](https://img.shields.io/packagist/dt/chrisdicarl/phpunit-failed-runner.svg?style=flat-square)](https://packagist.org/packages/chrisdicarl/phpunit-failed-runner)
-![GitHub Actions](https://github.com/chrisdicarl/phpunit-failed-runner/actions/workflows/main.yml/badge.svg)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/chrisdicarlo/phpunit-failed-runner.svg?style=flat-square)](https://packagist.org/packages/chrisdicarl/phpunit-failed-runner)
+[![Total Downloads](https://img.shields.io/packagist/dt/chrisdicarlo/phpunit-failed-runner.svg?style=flat-square)](https://packagist.org/packages/chrisdicarl/phpunit-failed-runner)
+![GitHub Actions](https://github.com/chrisdicarlo/phpunit-failed-runner/actions/workflows/main.yml/badge.svg)
 
 Small package that allows you to run only your previously failed tests.
 
