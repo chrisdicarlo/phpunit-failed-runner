@@ -10,7 +10,7 @@ Small package that allows you to incrementally run only your previously failed t
 You can install the package via composer:
 
 ```bash
-composer require chrisdicarl/phpunit-failed-runner --dev
+composer require chrisdicarlo/phpunit-failed-runner --dev
 ```
 
 ## Configuration
