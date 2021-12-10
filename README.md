@@ -29,6 +29,17 @@ Optionally, add the logfile to your .gitignore:
 echo testdox.xml >> .gitignore
 ```
 
+### Install XmlStarlet
+
+On Linux:
+
+```bash
+sudo apt-get update
+sudo apt-get install xmlstarlet
+```
+
+For XmlStarlet on other platforms, see [here](http://xmlstar.sourceforge.net/doc/UG/xmlstarlet-ug.html#idm47077139681232).
+
 ## Usage
 
 ```bash
