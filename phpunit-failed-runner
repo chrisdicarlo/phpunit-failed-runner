@@ -2,6 +2,12 @@
 
 logfile=./testdox.xml
 
+if [ -f "./vendor/bin/pest" ]; then
+    runner="./vendor/bin/pest"
+else
+    runner="./vendor/bin/phpunit"
+fi
+
 if test -f "$logfile"; then
     echo "Logfile found. Searching for failed tests..."
 
@@ -16,11 +22,11 @@ if test -f "$logfile"; then
         echo "No failed tests!  Great job!"
     else
         echo "Found failed tests, filtering..."
-        ./vendor/bin/phpunit --filter "'$failed_tests'"
+        "$runner" --filter "'$failed_tests'"
     fi
 else
     echo "Logfile not found. Running the full test suite..."
-    ./vendor/bin/phpunit
+    "$runner"
 fi
 
 # Strip out everything except the failed tests
