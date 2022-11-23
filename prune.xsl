@@ -1,13 +1,22 @@
 <xsl:stylesheet version="1.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:strip-space elements="*"/>
-    <xsl:output omit-xml-declaration="no" indent="yes"/>
 
-    <xsl:template match="node()|@*">
-      <xsl:copy>
-         <xsl:apply-templates select="node()|@*"/>
-      </xsl:copy>
+    <xsl:template match="/">
+        <tests>
+            <xsl:apply-templates />
+        </tests>
     </xsl:template>
 
-    <xsl:template match="test[not(@status='3')]"/>
+    <xsl:template match="/testsuite">
+        <tests>
+            <xsl:apply-templates select="testcase" />
+        </tests>
+    </xsl:template>
+
+    <xsl:template match="testcase[error|failure]">
+        <test>
+            <xsl:value-of select="@class"/>::<xsl:value-of select="@name"/>
+        </test>
+    </xsl:template>
 </xsl:stylesheet>
