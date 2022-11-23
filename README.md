@@ -13,22 +13,6 @@ You can install the package via composer:
 composer require chrisdicarlo/phpunit-failed-runner --dev
 ```
 
-## Configuration
-
-This package requires Phpunit logging in textdox XML format.  Add the following to your phpunit.xml file:
-
-```xml
-<logging>
-    <testdoxXml outputFile="testdox.xml"/>
-</logging>
-```
-
-Optionally, add the logfile to your .gitignore:
-
-```bash
-echo testdox.xml >> .gitignore
-```
-
 ### Install XmlStarlet
 
 On Linux:
