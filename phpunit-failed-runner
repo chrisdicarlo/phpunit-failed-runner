@@ -1,6 +1,6 @@
 #!/bin/bash
 
-logfile=./testdox.xml
+logfile=./junit.xml
 
 if [ -f "./vendor/bin/pest" ]; then
     runner="./vendor/bin/pest"
@@ -9,35 +9,21 @@ else
 fi
 
 if test -f "$logfile"; then
-    echo "Logfile found. Searching for failed tests..."
+    echo -e "Logfile found. Searching for previously failing tests... \U23F3"
 
-    # Strip out everything except the failed tests just in
-    # case they were run using a different tool or script
-    xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl testdox.xml > testdoxTMP.xml
-    mv testdoxTMP.xml testdox.xml
+    count_failed_tests="$(xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl junit.xml | xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/count-failed.xsl)"
 
-    failed_tests="$(xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/failed-tests.xsl testdox.xml)"
-
-    if [ "$failed_tests" = "" ]; then
-        echo "No failed tests!  Great job!"
+    if [ "$count_failed_tests" = "0" ]; then
+        echo -e "No failed tests! Great job! \U1F44D \U1F389"
+        rm "$logfile"
+        exit 0
     else
-        echo "Found failed tests, filtering..."
-        "$runner" --filter "'$failed_tests'"
+        echo -e "Found $count_failed_tests previously failing tests, filtering... \U1F97A"
+        filter=$(xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl junit.xml | xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/failed-tests.xsl); "$runner" --filter "$filter" --log-junit junit.xml
     fi
 else
-    echo "Logfile not found. Running the full test suite..."
-    "$runner"
-fi
-
-# Strip out everything except the failed tests
-xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl testdox.xml > testdoxTMP.xml
-mv testdoxTMP.xml testdox.xml
-
-# If there are no more failed tests, remove the log file
-count_failed_tests="$(xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/count-failed.xsl testdox.xml)"
-
-if [ "$count_failed_tests" = "0" ]; then
-    rm ./testdox.xml
+    echo -e "Logfile not found. Running the full test suite... \U1F91E"
+    "$runner" --log-junit junit.xml
 fi
 
 exit 0
