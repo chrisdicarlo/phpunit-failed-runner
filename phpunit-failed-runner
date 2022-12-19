@@ -26,4 +26,13 @@ else
     "$runner" --log-junit junit.xml
 fi
 
+if test -f "$logfile"; then
+    count_failed_tests="$(xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl junit.xml | xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/count-failed.xsl)"
+
+    if [ "$count_failed_tests" = "0" ]; then
+        echo -e "No failed tests! Great job! \U1F44D \U1F389"
+        rm "$logfile"
+    fi
+fi
+
 exit 0
