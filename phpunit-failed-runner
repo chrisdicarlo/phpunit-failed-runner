@@ -22,8 +22,10 @@ if test -f "$logfile"; then
         filter=$(xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl junit.xml | xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/failed-tests.xsl); "$runner" --filter "$filter" --log-junit junit.xml
     fi
 else
-    echo -e "Logfile not found. Running the full test suite... \U1F91E"
-    "$runner" --log-junit junit.xml
+    echo -e "Logfile not found. Running the test suite... \U1F91E"
+
+    additional_params="${@:1}"
+    "$runner" --log-junit junit.xml $additional_params
 fi
 
 if test -f "$logfile"; then
