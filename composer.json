@@ -29,8 +29,6 @@
         }
     },
     "scripts": {
-        "test": "phpunit",
-        "test:demo": "tests/demo-multi-phase.sh",
-        "test:auto": "tests/run-automated-test.sh"
+        "test": "phpunit"
     }
 }
