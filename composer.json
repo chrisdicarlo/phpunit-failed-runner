@@ -19,5 +19,16 @@
     ],
     "bin": [
         "bin/phpunit-failed-runner"
-    ]
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^8.5|^9.6|^10.5|^11.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
 }

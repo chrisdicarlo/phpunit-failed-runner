@@ -30,6 +30,16 @@ For XmlStarlet on other platforms, see [here](http://xmlstar.sourceforge.net/doc
 ./vendor/bin/phpunit-failed-runner
 ```
 
+## Testing
+
+This package includes a comprehensive test suite that demonstrates the incremental test-fixing workflow.
+
+Run the test suite:
+
+```bash
+composer test
+```
+
 ### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
