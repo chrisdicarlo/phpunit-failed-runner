@@ -32,18 +32,12 @@ For XmlStarlet on other platforms, see [here](http://xmlstar.sourceforge.net/doc
 
 ## Testing
 
-This package includes a comprehensive test suite that demonstrates the incremental test-fixing workflow. See [tests/README.md](tests/README.md) for details.
+This package includes a comprehensive test suite that demonstrates the incremental test-fixing workflow.
 
 Run the test suite:
 
 ```bash
 composer test
-```
-
-Run the automated multi-phase demonstration:
-
-```bash
-composer test:auto
 ```
 
 ### Changelog
