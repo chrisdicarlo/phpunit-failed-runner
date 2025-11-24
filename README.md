@@ -1,7 +1,7 @@
 # Run Only Your Failed Tests
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/chrisdicarlo/phpunit-failed-runner.svg?style=flat-square)](https://packagist.org/packages/chrisdicarl/phpunit-failed-runner)
-[![Total Downloads](https://img.shields.io/packagist/dt/chrisdicarlo/phpunit-failed-runner.svg?style=flat-square)](https://packagist.org/packages/chrisdicarl/phpunit-failed-runner)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/chrisdicarlo/phpunit-failed-runner.svg?style=flat-square)](https://packagist.org/packages/chrisdicarlo/phpunit-failed-runner)
+[![Total Downloads](https://img.shields.io/packagist/dt/chrisdicarlo/phpunit-failed-runner.svg?style=flat-square)](https://packagist.org/packages/chrisdicarlo/phpunit-failed-runner)
 
 Small package that allows you to incrementally run only your previously failed tests.
 
