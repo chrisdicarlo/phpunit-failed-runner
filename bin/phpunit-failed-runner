@@ -8,10 +8,22 @@ else
     runner="./vendor/bin/phpunit"
 fi
 
+# Determine XSL path - check if we're in the package itself or using it as a dependency
+if [ -f "./prune.xsl" ]; then
+    # We're in the package root
+    xsl_path="."
+elif [ -f "./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl" ]; then
+    # We're using the package as a dependency
+    xsl_path="./vendor/chrisdicarlo/phpunit-failed-runner"
+else
+    echo "Error: Cannot find XSL transformation files"
+    exit 1
+fi
+
 if test -f "$logfile"; then
     echo -e "Logfile found. Searching for previously failing tests... \U23F3"
 
-    count_failed_tests="$(xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl junit.xml | xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/count-failed.xsl)"
+    count_failed_tests="$(xmlstarlet tr "$xsl_path/prune.xsl" junit.xml | xmlstarlet tr --omit-decl "$xsl_path/count-failed.xsl")"
 
     if [ "$count_failed_tests" = "0" ]; then
         echo -e "No failed tests! Great job! \U1F44D \U1F389"
@@ -19,7 +31,7 @@ if test -f "$logfile"; then
         exit 0
     else
         echo -e "Found $count_failed_tests previously failing tests, filtering... \U1F97A"
-        filter=$(xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl junit.xml | xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/failed-tests.xsl); "$runner" --filter "$filter" --log-junit junit.xml
+        filter=$(xmlstarlet tr "$xsl_path/prune.xsl" junit.xml | xmlstarlet tr --omit-decl "$xsl_path/failed-tests.xsl"); "$runner" --filter "$filter" --log-junit junit.xml
     fi
 else
     echo -e "Logfile not found. Running the test suite... \U1F91E"
@@ -29,7 +41,7 @@ else
 fi
 
 if test -f "$logfile"; then
-    count_failed_tests="$(xmlstarlet tr ./vendor/chrisdicarlo/phpunit-failed-runner/prune.xsl junit.xml | xmlstarlet tr --omit-decl ./vendor/chrisdicarlo/phpunit-failed-runner/count-failed.xsl)"
+    count_failed_tests="$(xmlstarlet tr "$xsl_path/prune.xsl" junit.xml | xmlstarlet tr --omit-decl "$xsl_path/count-failed.xsl")"
 
     if [ "$count_failed_tests" = "0" ]; then
         echo -e "No failed tests! Great job! \U1F44D \U1F389"

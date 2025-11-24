@@ -19,5 +19,18 @@
     ],
     "bin": [
         "bin/phpunit-failed-runner"
-    ]
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^10.5|^11.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:demo": "tests/demo-multi-phase.sh",
+        "test:auto": "tests/run-automated-test.sh"
+    }
 }
