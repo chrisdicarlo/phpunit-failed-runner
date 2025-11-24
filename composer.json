@@ -18,6 +18,6 @@
         }
     ],
     "bin": [
-        "phpunit-failed-runner"
+        "bin/phpunit-failed-runner"
     ]
 }
